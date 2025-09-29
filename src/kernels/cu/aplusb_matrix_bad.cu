@@ -1,3 +1,4 @@
+// Комментарий для того чтобы сделать коммит и пул реквест
 #include <libgpu/context.h>
 #include <libgpu/work_size.h>
 #include <libgpu/shared_device_buffer.h>
