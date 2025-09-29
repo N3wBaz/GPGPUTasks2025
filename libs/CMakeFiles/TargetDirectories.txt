@@ -1,0 +1,8 @@
+/home/uolko/study/gputask/GPGPUTasks2025/libs/CMakeFiles/enumDevices.dir
+/home/uolko/study/gputask/GPGPUTasks2025/libs/CMakeFiles/edit_cache.dir
+/home/uolko/study/gputask/GPGPUTasks2025/libs/CMakeFiles/rebuild_cache.dir
+/home/uolko/study/gputask/GPGPUTasks2025/libs/libs/CMakeFiles/edit_cache.dir
+/home/uolko/study/gputask/GPGPUTasks2025/libs/libs/CMakeFiles/rebuild_cache.dir
+/home/uolko/study/gputask/GPGPUTasks2025/libs/libs/clew/CMakeFiles/libclew.dir
+/home/uolko/study/gputask/GPGPUTasks2025/libs/libs/clew/CMakeFiles/edit_cache.dir
+/home/uolko/study/gputask/GPGPUTasks2025/libs/libs/clew/CMakeFiles/rebuild_cache.dir

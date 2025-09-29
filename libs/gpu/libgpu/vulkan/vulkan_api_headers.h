@@ -14,6 +14,8 @@
 #define VULKAN_HPP_DISPATCH_LOADER_DYNAMIC 1
 #define VK_NO_PROTOTYPES // disabled because prototypes are useful only for static-linking, but we are using dynamic-linking
 #include <vulkan/vulkan.hpp>
+
+
 #include <vulkan/vulkan_raii.hpp>
 #include <vulkan/vulkan_beta.h> // we need to use VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME on MacOS+MoltenVK
 
@@ -37,8 +39,11 @@ namespace vk {
 
 #define VMA_VULKAN_VERSION (VULKAN_MIN_VERSION_MAJOR*1000000+VULKAN_MIN_VERSION_MINOR*1000)
 #define VMA_STATIC_VULKAN_FUNCTIONS 0
-#define VMA_DYNAMIC_VULKAN_FUNCTIONS 1
-#include <vma/vk_mem_alloc.h>
+// #define VMA_DYNAMIC_VULKAN_FUNCTIONS 1
+// #include <vma/vk_mem_alloc.h>
+#include </usr/include/vk_mem_alloc.h>
+
+
 
 //______________________________________________________________________________________________________________________
 

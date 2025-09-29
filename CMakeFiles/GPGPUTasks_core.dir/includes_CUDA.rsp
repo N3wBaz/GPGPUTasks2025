@@ -1,0 +1,1 @@
+-I/home/uolko/study/gputask/GPGPUTasks2025/libs/clew -I/home/uolko/study/gputask/GPGPUTasks2025/libs/gpu -I/home/uolko/study/gputask/GPGPUTasks2025/libs/base -I/home/uolko/study/gputask/GPGPUTasks2025/libs/images -I/home/uolko/study/gputask/GPGPUTasks2025/libs/utils -I/home/uolko/study/gputask/GPGPUTasks2025/libs/json -isystem "/usr/local/cuda-12.8/targets/x86_64-linux/include"

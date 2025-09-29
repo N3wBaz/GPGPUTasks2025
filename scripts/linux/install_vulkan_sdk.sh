@@ -38,10 +38,12 @@ echo "Installing googletest"
 unzip release-${googletest_version}.zip
 rm release-${googletest_version}.zip
 pushd googletest-release-${googletest_version}
+
+rm -rf releasebuild 
 mkdir releasebuild
 cd releasebuild
 cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=${install_prefix} ..
-make -j${njobs} install
+sudo make -j${njobs} install
 popd
 rm -rf googletest-release-${googletest_version}
 
@@ -49,10 +51,11 @@ echo "Installing Vulkan Headers"
 unzip Vulkan-Headers-${vulkan_headers_version}.zip
 rm Vulkan-Headers-${vulkan_headers_version}.zip
 cd Vulkan-Headers-${vulkan_headers_version}
+rm -rf releasebuild 
 mkdir releasebuild
 cd releasebuild
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${install_prefix} ..
-make -j$njobs install
+sudo make -j$njobs install
 cd ../..
 rm -rf Vulkan-Headers-${vulkan_headers_version}
 
@@ -63,31 +66,36 @@ cd Vulkan-Loader-${vulkan_loader_version}
 mkdir releasebuild
 cd releasebuild
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${install_prefix} -DVULKAN_HEADERS_INSTALL_DIR=${install_prefix} ..
-make -j$njobs install
+sudo make -j$njobs install
 cd ../..
 rm -rf Vulkan-Loader-${vulkan_loader_version}
 
-mkdir ${install_prefix}/include/vma
-mv vk_mem_alloc.h ${install_prefix}/include/vma/vk_mem_alloc.h
+sudo rm -rf ${install_prefix}/include/vma
+sudo mkdir ${install_prefix}/include/vma
+sudo mv vk_mem_alloc.h ${install_prefix}/include/vma/vk_mem_alloc.h
 
 echo "Installing glslc shaders compiler"
 unzip v2020.2.zip
 cd shaderc-2020.2/third_party
 wget https://github.com/KhronosGroup/SPIRV-Headers/archive/1.5.3.reservations1.zip
 unzip 1.5.3.reservations1.zip
+rm -rf spirv-headers
 mv SPIRV-Headers-1.5.3.reservations1 spirv-headers
 wget https://github.com/KhronosGroup/SPIRV-Tools/archive/v2020.4.zip
 unzip v2020.4.zip
+rm -rf spirv-tools 
 mv SPIRV-Tools-2020.4/ spirv-tools
 wget https://github.com/KhronosGroup/glslang/archive/SDK-candidate-26-Jul-2020.zip
 unzip SDK-candidate-26-Jul-2020.zip
+rm -rf glslang
 mv glslang-SDK-candidate-26-Jul-2020 glslang
 cd ..
+rm -rf build
 mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DSHADERC_SKIP_TESTS=TRUE
 make -j${njobs}
-cp glslc/glslc /usr/bin/
+sudo cp glslc/glslc /usr/bin/
 cd ../..
 rm v2020.2.zip
 rm -rf shaderc-2020.2
@@ -108,8 +116,8 @@ if [ "$SKIP_VALIDATION_LAYERS" -eq 0 ]; then
   #   Run this:
   # git config --global http.postBuffer 524288000
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${install_prefix} -DUPDATE_DEPS=ON -DBUILD_WERROR=ON -DBUILD_TESTS=OFF ..
-  make -j$njobs install
-  cp ${install_prefix}/lib/libVkLayer_khronos_validation.so /usr/lib/
+  sudo make -j$njobs install
+  sudo cp ${install_prefix}/lib/libVkLayer_khronos_validation.so /usr/lib/
   cd ../..
   rm Vulkan-ValidationLayers-${vulkan_validation_layers_version}.zip
   rm -rf Vulkan-ValidationLayers-${vulkan_validation_layers_version}
@@ -124,6 +132,7 @@ cd SPIRV-Reflect-vulkan-sdk-${vulkan_spirv_reflect_version}.0
 mkdir releasebuild
 cd releasebuild
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${install_prefix} ..
-make -j$njobs install
+sudo make -j$njobs install
 cd ../..
 rm -rf SPIRV-Reflect-vulkan-sdk-${vulkan_spirv_reflect_version}.0
+echo "Installation completed"
